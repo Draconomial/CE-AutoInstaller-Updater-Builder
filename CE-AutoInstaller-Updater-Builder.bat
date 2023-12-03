@@ -1,6 +1,32 @@
 @Echo off
 echo HobGoblin's Fast Lazy Installer and Updater for Combat Extended :D
 
+:: Check if dotnet is installed
+dotnet --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo .NET SDK is not installed. Attempting to install it using winget...
+    winget install --id=Microsoft.dotnet.SDK.7
+    if %errorlevel% neq 0 (
+        echo Failed to install .NET SDK. Please install it manually and re-run the script.
+        pause
+        exit /b 1
+    )
+)
+
+:: Continue to Check if Git is installed
+git --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Git is not installed. Attempting to install Git using winget...
+    winget install --id Git.Git -e --source winget
+    if %errorlevel% neq 0 (
+        echo Failed to install Git. Please install it manually and re-run the script.
+        pause
+        exit /b 1
+    )
+)
+
+:: Continue with Mods folder verifier
+
 CALL :ModsFolderVerifier
 
 :: Set this to true if you only want to update and don't want to install mods!
