@@ -5,9 +5,9 @@ echo HobGoblin's Fast Lazy Installer and Updater for Combat Extended :D
 dotnet --version >nul 2>&1
 if %errorlevel% neq 0 (
     echo .NET SDK is not installed. Attempting to install it using winget...
-    winget install --id=Microsoft.dotnet.SDK.8
+    winget install --id=Microsoft.dotnet.SDK.9
     if %errorlevel% neq 0 (
-        echo .NET SDK is not installed. Please download and install it from https://dotnet.microsoft.com/download/dotnet/8.0 manually, and then re-run the script.
+        echo .NET SDK is not installed. Please download and install it from https://dotnet.microsoft.com/download/dotnet/9.0 manually, and then re-run the script.
         pause
         exit /b 1
     )
